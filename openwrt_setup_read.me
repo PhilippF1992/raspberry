@@ -1,0 +1,27 @@
+Connect HAT via usb
+Connect usb-wlan-stick
+Connect usb-keyboard
+Connect hdmi
+Connect ethernet
+
+Login with usb-keyboard and hdmi
+
+press enter
+
+change password:
+
+      $ passwd
+
+set lan as dhcp to connect to local network
+      $ uci set network.lan.proto=dhcp
+      $ uci commit
+      $ /etc/init.d/network restart
+
+find ip:
+      $ ifconfig
+       => $IP
+test connection: 
+      $ ping google.com
+
+test ssh connection from local terminal: 
+      $ ssh root@$IP

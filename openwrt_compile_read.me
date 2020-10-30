@@ -1,0 +1,51 @@
+Install OpenWRT Source from GIT:
+
+ 1. git clone https://github.com/openwrt/openwrt.git
+ 2. Follow Readme.me 
+
+To create a custom banner:
+
+ 1. Generate ACSII text banner.
+ 2. Edit openwrt/package/base-files/files/etc/banner" and paste your ACSII text
+
+Run OpenWRT Configuration:
+
+ 1. make menuconfig
+
+Items we need in OpenWRT Configuration:
+
+ 1. Target System = Broadcom BCM27xx
+ 2. Subtarget = BCM2711 boards 64bit
+ 3. Target Profile = Raspberry Pi 4b
+ 4. Target Images = squashfs
+ 5. Kernel Modules -
+   -- Network Devices
+         = kmod-mii
+   -- USB Support 
+         = kmod-usb-hid
+         = kmod-usb-net
+         = kmod-usb-net-cdc-mbim
+         = kmod-usb-net-ipheth
+         = kmod-usb-net-qmi-wwan
+         = kmod-usb-net-rndis
+         = kmod-usb-wdm
+         = kmod-usb2
+         = kmod-usb3
+   -- Wireless Drivers 
+         = kmod-rtl8812au-cu
+         = kmod-rtl8xxxu
+ 6. LUCI -
+   -- Collections
+        = luci
+        = luci-ssl
+ 7. Network 
+   -- WWAN 
+         = uqmi
+ 8. Utilities
+     = usb-modeswitch
+ 9. Libraries
+     = libssh
+     = libssh2
+ 10. Save
+ 11. Exit
+ 12. make (or to use multiple cores) make -jx (where x = cpu cores+1)
